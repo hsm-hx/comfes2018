@@ -31,8 +31,10 @@ def judgement(hand):
     return "Straight Flush"
   #four_of_a_kind(hand)
   #full_house(hand)
-  #flush(hand)
-  #straight(hand)
+  elif flush(hand) == True:
+    return "Flush"
+  elif straight(hand) == True:
+    return "Straight"
   #three_of_a_kind(hand)
   #two_pair(hand)
   elif one_pair(hand) == True:
