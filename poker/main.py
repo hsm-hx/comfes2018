@@ -1,4 +1,5 @@
 import random
+from operator import attrgetter
 import judge
 
 SUIT = 4
@@ -80,6 +81,9 @@ if __name__ == '__main__':
     else:
       print(str(i+1) + ' ', end="")
       hand_draw(i, hand, deck)
+
+  #sort by rank
+  hand = sorted(hand, key=attrgetter('rank'))
 
   print("\nChange Result")
   for i in range(len(hand)):
