@@ -15,10 +15,21 @@ def flush(hand):
 
   return True
 
+def straight(hand):
+  for i in hand:
+    if i.rank == hand[hand.index(i)+1].rank+1:
+      continue
+    else:
+      return False
+  #10-J-Q-K-A 
+
+  return True
+
+
 def one_pair(hand):
   for i in hand:
     for j in hand:
-      if hand.index(j) <= hand .index(i):
+      if hand.index(j) <= hand.index(i):
         continue
       else:
         if j.rank == i.rank:
