@@ -25,6 +25,25 @@ def straight(hand):
 
   return True
 
+def four_of_a_kind(hand):
+  for i in range(len(hand)):
+    if hand[i].rank != hand[i+1].rank and hand[i+1].rank != hand[i+2].rank:
+      return False
+    elif hand[i].rank == hand[i+1].rank:
+      for j in hand:
+        if hand[i].rank == j.rank:
+          continue
+        else:
+          return False
+    else:
+      for j in hand:
+        if hand.index(j) == 0:
+          continue
+        elif j.rank == hand[1].rank:
+          continue
+        else:
+          return False
+  return True
 
 def one_pair(hand):
   for i in hand:
