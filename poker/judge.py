@@ -59,7 +59,8 @@ def one_pair(hand):
 def judgement(hand):
   if straight_flush(hand) == True:
     return "Straight Flush"
-  #four_of_a_kind(hand)
+  elif four_of_a_kind(hand) == True:
+    return "Four of a Kind"
   #full_house(hand)
   elif flush(hand) == True:
     return "Flush"
