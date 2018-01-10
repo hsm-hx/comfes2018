@@ -12,7 +12,6 @@ def flush(hand):
       continue
     else:
       return False
-
   return True
 
 def straight(hand):
@@ -22,7 +21,6 @@ def straight(hand):
     else:
       return False
   #10-J-Q-K-A 
-
   return True
 
 def four_of_a_kind(hand):
@@ -45,6 +43,16 @@ def four_of_a_kind(hand):
           return False
   return True
 
+def three_of_a_kind(hand):
+  if hand[0].rank == hand[1].rank and hand[1].rank == hand[2].rank:
+    return True
+  elif hand[1].rank == hand[2].rank and hand[2].rank == hand[3].rank:
+    return True
+  elif hand[2].rank == hand[3].rank and hand[3].rank == hand[4].rank:
+    return True
+  else:
+    return False
+
 def one_pair(hand):
   for i in hand:
     for j in hand:
@@ -53,7 +61,6 @@ def one_pair(hand):
       else:
         if j.rank == i.rank:
           return True
-
   return False
 
 def judgement(hand):
@@ -66,7 +73,8 @@ def judgement(hand):
     return "Flush"
   elif straight(hand) == True:
     return "Straight"
-  #three_of_a_kind(hand)
+  elif three_of_a_kind(hand) == True:
+    return "Three of a Kind"
   #two_pair(hand)
   elif one_pair(hand) == True:
     return "One Pair"
