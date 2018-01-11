@@ -23,6 +23,15 @@ def straight(hand):
   #10-J-Q-K-A 
   return True
 
+def full_house(hand):
+  if hand[0].rank == hand[1].rank:
+    if hand[2].rank == hand[3].rank == hand[4].rank:
+      return True
+  elif hand[0].rank == hand[1].rank and hand[1].rank == hand[2].rank:
+    if hand[3].rank == hand[4].rank:
+      return True
+  return False
+
 def four_of_a_kind(hand):
   for i in range(len(hand)):
     if hand[i].rank != hand[i+1].rank and hand[i+1].rank != hand[i+2].rank:
@@ -81,7 +90,8 @@ def judgement(hand):
     return "Straight Flush"
   elif four_of_a_kind(hand) == True:
     return "Four of a Kind"
-  #full_house(hand)
+  elif full_house(hand) == True:
+    return "Full House"
   elif flush(hand) == True:
     return "Flush"
   elif straight(hand) == True:
