@@ -27,7 +27,7 @@ def full_house(hand):
   if hand[0].rank == hand[1].rank:
     if hand[2].rank == hand[3].rank == hand[4].rank:
       return True
-  elif hand[0].rank == hand[1].rank and hand[1].rank == hand[2].rank:
+  elif hand[0].rank == hand[1].rank == hand[2].rank:
     if hand[3].rank == hand[4].rank:
       return True
   return False
@@ -53,11 +53,11 @@ def four_of_a_kind(hand):
   return True
 
 def three_of_a_kind(hand):
-  if hand[0].rank == hand[1].rank and hand[1].rank == hand[2].rank:
+  if hand[0].rank == hand[1].rank == hand[2].rank:
     return True
-  elif hand[1].rank == hand[2].rank and hand[2].rank == hand[3].rank:
+  elif hand[1].rank == hand[2].rank == hand[3].rank:
     return True
-  elif hand[2].rank == hand[3].rank and hand[3].rank == hand[4].rank:
+  elif hand[2].rank == hand[3].rank == hand[4].rank:
     return True
   else:
     return False
@@ -65,7 +65,7 @@ def three_of_a_kind(hand):
 def two_pair(hand):
   pair_rank = one_pair(hand)
 
-  if pair_rank != NULL:
+  if pair_rank is not None:
     for i in hand:
       for j in hand:
         if hand.index(j) <= hand.index(i):
