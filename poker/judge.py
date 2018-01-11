@@ -88,7 +88,8 @@ def judgement(hand):
     return "Straight"
   elif three_of_a_kind(hand) == True:
     return "Three of a Kind"
-  #two_pair(hand)
+  elif two_pair(hand) == True:
+    return "Two Pair"
   elif one_pair(hand) is not None:
     return "One Pair"
 
