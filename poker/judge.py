@@ -53,6 +53,18 @@ def three_of_a_kind(hand):
   else:
     return False
 
+def two_pair(hand):
+  pair_rank = one_pair(hand)
+
+  if pair_rank != NULL:
+    for i in hand:
+      for j in hand:
+        if hand.index(j) <= hand.index(i):
+          continue
+        else:
+          if j.rank == i.rank and j.rank != pair_rank:
+            return True
+  return False
 
 def one_pair(hand):
   for i in hand:
@@ -62,7 +74,7 @@ def one_pair(hand):
       else:
         if j.rank == i.rank:
           return j.rank
-  return NULL
+  return None
 
 def judgement(hand):
   if straight_flush(hand) == True:
@@ -77,7 +89,7 @@ def judgement(hand):
   elif three_of_a_kind(hand) == True:
     return "Three of a Kind"
   #two_pair(hand)
-  elif one_pair(hand) != NULL:
+  elif one_pair(hand) is not None:
     return "One Pair"
 
   else:
