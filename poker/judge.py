@@ -33,24 +33,12 @@ def full_house(hand):
   return False
 
 def four_of_a_kind(hand):
-  for i in range(len(hand)):
-    if hand[i].rank != hand[i+1].rank and hand[i+1].rank != hand[i+2].rank:
-      return False
-    elif hand[i].rank == hand[i+1].rank:
-      for j in hand:
-        if hand[i].rank == j.rank:
-          continue
-        else:
-          return False
-    else:
-      for j in hand:
-        if hand.index(j) == 0:
-          continue
-        elif j.rank == hand[1].rank:
-          continue
-        else:
-          return False
-  return True
+  if hand[0].rank == hand[1].rank == hand[2].rank == hand[3].rank:
+    return True
+  elif hand[1].rank == hand[2].rank == hand[3].rank == hand[4].rank:
+    return True
+  else:
+    return False
 
 def three_of_a_kind(hand):
   if hand[0].rank == hand[1].rank == hand[2].rank:
