@@ -82,13 +82,13 @@ if __name__ == '__main__':
       print(str(i+1) + ' ', end="")
       hand_draw(i, hand, deck)
 
-  #sort by rank
-  hand = sorted(hand, key=attrgetter('rank'))
-
   print("\nChange Result")
   for i in range(len(hand)):
     print(str(i+1) + " : ", end="")
     hand[i].show()
+
+  #sort by rank
+  hand = sorted(hand, key=attrgetter('rank'))
 
   print(judge.judgement(hand))
   
