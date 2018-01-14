@@ -1,6 +1,7 @@
 import random
 from operator import attrgetter
 import judge
+import ability
 
 SUIT = 4
 RANK = 13
