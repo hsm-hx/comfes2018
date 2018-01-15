@@ -6,7 +6,7 @@ import sys
 def main():
   pygame.init()
   screen = pygame.display.set_mode((400, 300))
-  pygame.display.set_caption("Lilia and the Rainbow Nocturne")
+  pygame.display.set_caption("リリアと虹色の夜想曲")
 
   while(1):
     screen.fill((0,0,0))
@@ -18,3 +18,4 @@ def main():
         sys.exit()
 if __name__ == "__main__":
   main()
+  
