@@ -5,7 +5,7 @@ import sys
 
 def main():
   pygame.init()
-  screen = pygame.display.set_mode((400, 300))
+  screen = pygame.display.set_mode((1280, 720))
   pygame.display.set_caption("リリアと虹色の夜想曲")
 
   while(1):
