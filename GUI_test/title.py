@@ -9,13 +9,14 @@ def main():
   pygame.display.set_caption("リリアと虹色の夜想曲")
   #bg = pygame.image.load("img/bg.jpg").convert_alpha()
   #rect_bg = bg.get_rect()
-  font = pygame.font.Font(None, 55)
+  font = pygame.font.Font("GenShinGothic-Medium.ttf", 55)
 
   menu_pointer = 0
 
   while(1):
     menu_start = font.render("START", True, (255, 255, 255))
     menu_quit = font.render("QUIT", True, (255, 255, 255))
+    caption = font.render("上下キーで選択・スペースキーで決定", True, (255, 255, 255))
 
     arrow = font.render("->", True, (255,255,255))
 
@@ -23,6 +24,7 @@ def main():
     #screen.blit(bg, rect_bg)
     screen.blit(menu_start, [100, 100])
     screen.blit(menu_quit, [100, 200])
+    screen.blit(caption, [200, 500])
 
     if menu_pointer == 0:
       screen.blit(arrow, [50, 100])
@@ -44,6 +46,13 @@ def main():
             menu_pointer = 0
           else:
             menu_pointer = 1
+        if event.key == K_SPACE:
+          if menu_pointer == 0:
+            continue
+          elif menu_pointer == 1:
+            pygame.quit()
+            sys.exit()
+
 if __name__ == "__main__":
   main()
   
