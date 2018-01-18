@@ -15,10 +15,15 @@ def main():
     menu_start = font.render("START", True, (255, 255, 255))
     menu_quit = font.render("QUIT", True, (255, 255, 255))
 
+    arrow = font.render("->", True, (255,255,255))
+
     screen.fill((0,20,0, 0))
     screen.blit(bg, rect_bg)
-    screen.blit(menu_start, [100, 200])
-    screen.blit(menu_quit, [100, 100])
+    screen.blit(menu_start, [100, 100])
+    screen.blit(menu_quit, [100, 200])
+
+    screen.blit(arrow, [50, 100])
+    screen.blit(arrow, [50, 200])
 
     pygame.display.update()
 
