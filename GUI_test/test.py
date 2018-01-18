@@ -27,20 +27,19 @@ def main():
                 pygame.quit()
                 sys.exit()
 
-                if event.type == KEYDOWN:
-                    if event.key ==K_ESCAPE:
-                        pygame.quit()
-                        sys.exit()
+            if event.type == KEYDOWN:
+                if event.key ==K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
 
-                    if event.key == K_LEFT:
-                        print("K_LEFT pushed!") 
-                        x -= 1
-                    if event.key == K_RIGHT:
-                        x += 1
-                    if event.key == K_UP:
-                        y -= 1
-                    if event.key == K_DOWN:
-                        y += 1
+                if event.key == K_LEFT:
+                    x -= 1
+                if event.key == K_RIGHT:
+                    x += 1
+                if event.key == K_UP:
+                    y -= 1
+                if event.key == K_DOWN:
+                    y += 1
 
 if __name__ == "__main__":
     main()
