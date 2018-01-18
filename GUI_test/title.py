@@ -11,6 +11,8 @@ def main():
   rect_bg = bg.get_rect()
   font = pygame.font.Font(None, 55)
 
+  menu_pointer = 0
+
   while(1):
     menu_start = font.render("START", True, (255, 255, 255))
     menu_quit = font.render("QUIT", True, (255, 255, 255))
@@ -22,8 +24,10 @@ def main():
     screen.blit(menu_start, [100, 100])
     screen.blit(menu_quit, [100, 200])
 
-    screen.blit(arrow, [50, 100])
-    screen.blit(arrow, [50, 200])
+    if menu_pointer == 0:
+      screen.blit(arrow, [50, 100])
+    elif menu_pointer == 1:
+      screen.blit(arrow, [50, 200])
 
     pygame.display.update()
 
@@ -35,7 +39,11 @@ def main():
         if event.key == K_ESCAPE:
           pygame.quit()
           sys.exit()
-
+        if event.key == K_DOWN or event.key == K_UP:
+          if menu_pointer == 1:
+            menu_pointer = 0
+          else:
+            menu_pointer = 1
 if __name__ == "__main__":
   main()
   
