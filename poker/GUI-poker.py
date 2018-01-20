@@ -87,28 +87,21 @@ def main():
           key_pointer -= 1
         if event.key == K_RIGHT:
           key_pointer += 1
-    
+        if event.key == K_SPACE:
+          change[count] = key_pointer
+          count += 1
+        if event.key == K_RETURN:
+          #次のフェイズに進む処理
+          pass
     if key_pointer == 5:
       key_pointer -= 5
     if key_pointer == -1:
       key_pointer += 5
-    
+     
     screen.blit(cursor, [key_pointer*200, 0])
     pygame.display.update()
+
 '''
-  while True:
-    ch = input()
-
-    #When F inputted, finish change phase
-    if ch == 'F': break
-
-    #I must rewrite this code to be inputed Alphabet which is not 'F'
-    elif 1<=int(ch) and int(ch)<=5:
-      change[count] = int(ch)-1
-      count += 1
-
-    else: continue
-
   print("Change Cards: ", end="")
   for i in change:
     if i == 9:
