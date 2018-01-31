@@ -55,7 +55,7 @@ def hand_draw(index, hand, deck):
 def main():
   deck = 52*[0] # Initialize by 0
   hand = 5*[0] # initialize by 0
-  change = 5*[9]
+  change = 5*[9] # 9をNULLの代わりに使っている
   count = 0
   key_pointer = 0
   
@@ -88,6 +88,7 @@ def main():
         if event.key == K_RIGHT:
           key_pointer += 1
         if event.key == K_SPACE:
+          # if changeの中にまだポインタが保存されていなければ 
           change[count] = key_pointer
           count += 1
         if event.key == K_RETURN:
@@ -97,7 +98,9 @@ def main():
       key_pointer -= 5
     if key_pointer == -1:
       key_pointer += 5
-     
+    
+    for i in change:
+      screen.blit(cursor, [i*200, 300])
     screen.blit(cursor, [key_pointer*200, 0])
     pygame.display.update()
 
