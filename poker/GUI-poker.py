@@ -88,9 +88,17 @@ def main():
         if event.key == K_RIGHT:
           key_pointer += 1
         if event.key == K_SPACE:
-          # if changeの中にまだポインタが保存されていなければ 
-          change[count] = key_pointer
-          count += 1
+          flag = 0
+          for i in range(count+1):
+            if change[i] == key_pointer:
+              flag = 1
+              break
+            else:
+              continue
+
+          if flag != 1:
+            change[count] = key_pointer
+            count += 1
         if event.key == K_RETURN:
           #次のフェイズに進む処理
           pass
