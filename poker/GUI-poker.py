@@ -100,8 +100,16 @@ def main():
             change[count] = key_pointer
             count += 1
         if event.key == K_RETURN:
-          #次のフェイズに進む処理
-          pass
+          for i in change:
+            if i == 9:
+              break
+            else:
+              hand_draw(i, hand, deck)
+            for i in change:
+              screen.blit(cursor, [i*200, 300])
+            screen.blit(cursor, [key_pointer*200, 0])
+            pygame.display.update()
+          
     if key_pointer == 5:
       key_pointer -= 5
     if key_pointer == -1:
