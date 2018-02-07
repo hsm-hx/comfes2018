@@ -1,9 +1,7 @@
 import random
-from operator import attrgetter
 import pygame
 from pygame.locals import *
 import sys
-import judge
 import ability
 
 SUIT = 4
@@ -43,7 +41,8 @@ def deck_init(deck):
       count += 1
 
 def hand_init(hand):
-  for i in hand: hand = Card(0,1)
+  for i in hand:
+    hand = Card(0,1)
 
 def hand_draw(index, hand, deck):
   hand[index] = deck[random.randint(0, 52-1)]
@@ -52,10 +51,10 @@ def hand_draw(index, hand, deck):
       while hand[i]==hand[index]:
         hand[index] = deck[random.randint(0, 52-1)]
 
-def main():
+def redraw():
   deck = 52*[0] # Initialize by 0
   hand = 5*[0] # initialize by 0
-  change = 5*[False] # 9をNULLの代わりに使っている
+  change = 5*[False]
   count = 0
   key_pointer = 0
   
@@ -74,6 +73,19 @@ def main():
     
     for i in range(len(hand)):
       hand[i].show(i*200, 500)
+          
+    if key_pointer == 5:
+      key_pointer -= 5
+    if key_pointer == -1:
+      key_pointer += 5
+    
+    for i in change:
+      if i == True:
+        screen.blit(cursor, [count*200, 300])
+      count += 1
+    screen.blit(cursor, [key_pointer*200, 0])
+    pygame.display.update()
+    count = 0
   
     for event in pygame.event.get():
       if event.type == QUIT:
@@ -99,6 +111,10 @@ def main():
             else:
               hand_draw(count, hand, deck)
             count += 1
+          screen.fill((0,0,0,0))
+          for i in range(len(hand)):
+            hand[i].show(i*200, 500)
+          return hand
 
           screen.fill((0,0,0,0))
           for i in range(len(hand)):
@@ -106,39 +122,3 @@ def main():
           screen.blit(cursor, [key_pointer*200, 0])
           pygame.display.update()
           count = 0
-          
-    if key_pointer == 5:
-      key_pointer -= 5
-    if key_pointer == -1:
-      key_pointer += 5
-    
-    for i in change:
-      if i == True:
-        screen.blit(cursor, [count*200, 300])
-      count += 1
-    screen.blit(cursor, [key_pointer*200, 0])
-    pygame.display.update()
-    count = 0
-
-'''
-  print("Change Cards: ", end="")
-  for i in change:
-    if i == 9:
-      break
-    else:
-      print(str(i+1) + ' ', end="")
-      hand_draw(i, hand, deck)
-
-  print("\nChange Result")
-  for i in range(len(hand)):
-    print(str(i+1) + " : ", end="")
-    hand[i].show(i*100, 500)
- 
-  pygame.display.update() 
-  #sort by rank
-  hand = sorted(hand, key=attrgetter('rank'))
-
-  print(judge.judgement(hand))
-'''
-
-main()
