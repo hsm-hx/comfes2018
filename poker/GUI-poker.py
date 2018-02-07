@@ -55,7 +55,7 @@ def hand_draw(index, hand, deck):
 def main():
   deck = 52*[0] # Initialize by 0
   hand = 5*[0] # initialize by 0
-  change = 5*[9] # 9をNULLの代わりに使っている
+  change = 5*[False] # 9をNULLの代わりに使っている
   count = 0
   key_pointer = 0
   
@@ -88,27 +88,24 @@ def main():
         if event.key == K_RIGHT:
           key_pointer += 1
         if event.key == K_SPACE:
-          flag = 0
-          for i in range(count+1):
-            if change[i] == key_pointer:
-              flag = 1
-              break
-            else:
-              continue
-
-          if flag != 1:
-            change[count] = key_pointer
-            count += 1
+          if change[key_pointer] == False:
+            change[key_pointer] = True
+          else:
+            change[key_pointer] = False
         if event.key == K_RETURN:
           for i in change:
-            if i == 9:
+            if i == False:
               break
             else:
-              hand_draw(i, hand, deck)
-            for i in change:
-              screen.blit(cursor, [i*200, 300])
-            screen.blit(cursor, [key_pointer*200, 0])
-            pygame.display.update()
+              hand_draw(count, hand, deck)
+            count += 1
+
+          screen.fill((0,0,0,0))
+          for i in range(len(hand)):
+            hand[i].show(i*200, 500)
+          screen.blit(cursor, [key_pointer*200, 0])
+          pygame.display.update()
+          count = 0
           
     if key_pointer == 5:
       key_pointer -= 5
@@ -116,9 +113,12 @@ def main():
       key_pointer += 5
     
     for i in change:
-      screen.blit(cursor, [i*200, 300])
+      if i == True:
+        screen.blit(cursor, [count*200, 300])
+      count += 1
     screen.blit(cursor, [key_pointer*200, 0])
     pygame.display.update()
+    count = 0
 
 '''
   print("Change Cards: ", end="")
