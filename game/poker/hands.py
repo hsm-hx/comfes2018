@@ -53,37 +53,46 @@ def hand_draw(index, hand, deck):
 
 def redraw():
   deck = 52*[0] # Initialize by 0
-  hand = 5*[0] # initialize by 0
-  change = 5*[False]
+  hand_player = 5*[0] # initialize by 0
+  change_player = 5*[False]
+  hand_enemy = 5*[0]
+  change_enemy = 5*[False]
   count = 0
   key_pointer = 0
   
   deck_init(deck)
-  hand_init(hand)
-  for i in range(len(hand)):
-    hand_draw(i, hand, deck)
+  hand_init(hand_player)
+  hand_init(hand_enemy)
+  for i in range(len(hand_player)):
+    hand_draw(i, hand_player, deck)
+  for i in range(len(hand_enemy)):
+    hand_draw(i, hand_enemy, deck)
 
-  for i in range(len(hand)):
-    hand[i].show(i*200, 500)
+  for i in range(len(hand_player)):
+    hand_player[i].show(i*200, 500)
+  for i in range(len(hand_enemy)):
+    hand_enemy[i].show(i*200, 100)
 
   pygame.display.update() 
 
   while True:
     screen.fill((0, 0, 0, 0))
     
-    for i in range(len(hand)):
-      hand[i].show(i*200, 500)
+    for i in range(len(hand_player)):
+      hand_player[i].show(i*200, 500)
+    for i in range(len(hand_enemy)):
+      hand_enemy[i].show(i*200, 100)
           
     if key_pointer == 5:
       key_pointer -= 5
     if key_pointer == -1:
       key_pointer += 5
     
-    for i in change:
+    for i in change_player:
       if i == True:
-        screen.blit(cursor, [count*200, 300])
+        screen.blit(cursor, [count*200, 400])
       count += 1
-    screen.blit(cursor, [key_pointer*200, 0])
+    screen.blit(cursor, [key_pointer*200, 350])
     pygame.display.update()
     count = 0
   
@@ -100,25 +109,26 @@ def redraw():
         if event.key == K_RIGHT:
           key_pointer += 1
         if event.key == K_SPACE:
-          if change[key_pointer] == False:
-            change[key_pointer] = True
+          if change_player[key_pointer] == False:
+            change_player[key_pointer] = True
           else:
-            change[key_pointer] = False
+            change_player[key_pointer] = False
         if event.key == K_RETURN:
-          for i in change:
+          for i in change_player:
             if i == False:
               break
             else:
-              hand_draw(count, hand, deck)
+              hand_draw(count, hand_player, deck)
             count += 1
           screen.fill((0,0,0,0))
-          for i in range(len(hand)):
-            hand[i].show(i*200, 500)
-          return hand
+          for i in range(len(hand_player)):
+            hand_player[i].show(i*200, 500)
+          return hand_player
+          #hand_player and hand_enemy must to be a list
 
           screen.fill((0,0,0,0))
-          for i in range(len(hand)):
-            hand[i].show(i*200, 500)
+          for i in range(len(hand_player)):
+            hand_player[i].show(i*200, 500)
           screen.blit(cursor, [key_pointer*200, 0])
           pygame.display.update()
           count = 0
