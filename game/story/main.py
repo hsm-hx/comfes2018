@@ -4,11 +4,16 @@ import pygame
 from pygame.locals import *
 import sys
 
-def main():
+def main(part):
   pygame.init()
   screen = pygame.display.set_mode((1280,720))
   pygame.display.set_caption("リリアと虹色の夜想曲")
   font = pygame.font.Font("font/Gen-Medium.ttf", 55)
+
+  fpass = "script/" + part + ".txt"
+  
+  script_file = fopen(fpass, "r")
+
 
   while(1):
     screen.fill((0,0,0))
@@ -26,4 +31,4 @@ def main():
           sys.exit()
 
 if __name__ == "__main__":
-  main()
+  main(introduction)
