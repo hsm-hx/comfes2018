@@ -11,9 +11,14 @@ class Script:
 
 def main(part):
   pygame.init()
-  screen = pygame.display.set_mode((1280,720))
+  screen = pygame.display.set_mode((960,720))
   pygame.display.set_caption("リリアと虹色の夜想曲")
   font = pygame.font.Font("font/Gen-Medium.ttf", 55)
+  text_frame = pygame.image.load("img/frame.png").convert_alpha()
+  bg = pygame.image.load("img/1/town.jpg").convert_alpha()
+  rect_bg = bg.get_rect()
+  rect_tf = text_frame.get_rect()
+  rect_tf.center = (480,600)
   script = []
 
   fpass = "script/" + part + ".txt"
@@ -42,8 +47,8 @@ def main(part):
 
   while(1):
     screen.fill((0,0,0))
-    text = font.render("TEST", True, (255,255,255))
-    screen.blit(text, [20,100])
+    screen.blit(bg, rect_bg)
+    screen.blit(text_frame, rect_tf)
     pygame.display.update()
 
     for event in pygame.event.get():
