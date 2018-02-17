@@ -16,9 +16,13 @@ def story(part):
   font = pygame.font.Font("font/Gen-Medium.ttf", 30)
   text_frame = pygame.image.load("img/frame.png").convert_alpha()
   bg = pygame.image.load("img/1/town.jpg").convert_alpha()
+  lilia_stand = pygame.image.load("img/girl.png").convert_alpha()
+  man_stand = pygame.image.load("img/man.png").convert_alpha()
   rect_bg = bg.get_rect()
   rect_tf = text_frame.get_rect()
   rect_tf.center = (480,600)
+  rect_lilia_stand = lilia_stand.get_rect()
+  rect_man_stand = man_stand.get_rect()
   script = []
 
   fpass = "script/" + part + ".txt"
@@ -37,6 +41,7 @@ def story(part):
       name = None
       line = None
 
+  script[0].name = script[0].name.lstrip(':')
   line_count = 0
 
   while(1):
@@ -49,6 +54,8 @@ def story(part):
       cur_line = font.render(script[line_count].line, True, (0,0,0))
       screen.fill((0,0,0))
       screen.blit(bg, rect_bg)
+      screen.blit(lilia_stand, [200, 200])
+      screen.blit(man_stand, [600, 200])
       screen.blit(text_frame, rect_tf)
       screen.blit(cur_name, [20, 490])
       screen.blit(cur_line, [20, 550])
