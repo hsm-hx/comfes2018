@@ -59,7 +59,6 @@ def main(part):
           sys.exit()
         if event.key == K_SPACE:
           line_count += 1
-          print("debug!")
 
 if __name__ == "__main__":
   main("1")
