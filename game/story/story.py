@@ -9,7 +9,7 @@ class Script:
     self.name = name
     self.line = line
 
-def main(part):
+def story(part):
   pygame.init()
   screen = pygame.display.set_mode((960,720))
   pygame.display.set_caption("リリアと虹色の夜想曲")
@@ -48,7 +48,7 @@ def main(part):
     screen.blit(cur_name, [20, 490])
     screen.blit(cur_line, [20, 550])
     pygame.display.update()
-
+    
     for event in pygame.event.get():
       if event.type == QUIT:
         pygame.quit()
@@ -59,6 +59,3 @@ def main(part):
           sys.exit()
         if event.key == K_SPACE:
           line_count += 1
-
-if __name__ == "__main__":
-  main("1")
