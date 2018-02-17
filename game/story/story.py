@@ -40,22 +40,27 @@ def story(part):
   line_count = 0
 
   while(1):
-    cur_name = font.render(script[line_count].name, True, (0,0,0))
-    cur_line = font.render(script[line_count].line, True, (0,0,0))
-    screen.fill((0,0,0))
-    screen.blit(bg, rect_bg)
-    screen.blit(text_frame, rect_tf)
-    screen.blit(cur_name, [20, 490])
-    screen.blit(cur_line, [20, 550])
-    pygame.display.update()
-    
-    for event in pygame.event.get():
-      if event.type == QUIT:
-        pygame.quit()
-        sys.exit()
-      if event.type == KEYDOWN:
-        if event.key == K_ESCAPE:
+    try:
+      check_in_range = script[line_count].name
+    except IndexError:
+      return True
+    else:
+      cur_name = font.render(script[line_count].name, True, (0,0,0))
+      cur_line = font.render(script[line_count].line, True, (0,0,0))
+      screen.fill((0,0,0))
+      screen.blit(bg, rect_bg)
+      screen.blit(text_frame, rect_tf)
+      screen.blit(cur_name, [20, 490])
+      screen.blit(cur_line, [20, 550])
+      pygame.display.update()
+      
+      for event in pygame.event.get():
+        if event.type == QUIT:
           pygame.quit()
           sys.exit()
-        if event.key == K_SPACE:
-          line_count += 1
+        if event.type == KEYDOWN:
+          if event.key == K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+          if event.key == K_SPACE:
+            line_count += 1
