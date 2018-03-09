@@ -2,7 +2,6 @@ import random
 import pygame
 from pygame.locals import *
 import sys
-import ability
 
 SUIT = 4
 RANK = 13
@@ -11,7 +10,7 @@ RANK = 13
 pygame.init()
 pygame.display.set_mode((w, h), 0, 32)
 screen = pygame.display.get_surface()
-font = pygame.font.Font("font/GenShinGothic-Medium.ttf", 55)
+font = pygame.font.Font("fonts/cinecap.ttf", 55)
 cursor = font.render("▼", True, (255,255,255))
 
 class Card():
@@ -24,9 +23,9 @@ class Card():
     self.rank=rank
 
     if self.rank < 10:
-      img_path = "img/card_" + self.suit + "_0" + str(self.rank) + ".png"
+      img_path = "../img/card_" + self.suit + "_0" + str(self.rank) + ".png"
     else:
-      img_path = "img/card_" + self.suit + "_" + str(self.rank) + ".png"
+      img_path = "../img/card_" + self.suit + "_" + str(self.rank) + ".png"
     self.img = pygame.image.load(img_path).convert_alpha()
     
   def show(self, pos_x, pos_y):
