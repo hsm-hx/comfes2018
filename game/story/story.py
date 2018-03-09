@@ -11,9 +11,9 @@ class Script:
 
 def story(part):
   pygame.init()
-  screen = pygame.display.set_mode((960,720))
+  screen = pygame.display.set_mode((1280,720))
   pygame.display.set_caption("リリアと虹色の夜想曲")
-  font = pygame.font.Font("font/Gen-Medium.ttf", 30)
+  font = pygame.font.Font("font/cinecap.ttf", 30)
   text_frame = pygame.image.load("img/frame.png").convert_alpha()
   bg = pygame.image.load("img/1/town.jpg").convert_alpha()
   lilia_stand = pygame.image.load("img/girl.png").convert_alpha()
