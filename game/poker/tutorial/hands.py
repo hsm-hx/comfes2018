@@ -9,6 +9,7 @@ RANK = 13
 (w, h) = (1280, 720)
 pygame.init()
 pygame.display.set_mode((w, h), 0, 32)
+
 screen = pygame.display.get_surface()
 font = pygame.font.Font("fonts/cinecap.ttf", 55)
 cursor = font.render("▼", True, (255,255,255))
@@ -123,7 +124,6 @@ def redraw():
           for i in range(len(hand_player)):
             hand_player[i].show(i*200, 500)
           return hand_player
-          #hand_player and hand_enemy must to be a list
 
           screen.fill((0,0,0,0))
           for i in range(len(hand_player)):
